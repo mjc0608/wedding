@@ -1,5 +1,5 @@
-// Target date: May 9, 2026, at 10:00 AM
-const targetDate = new Date('May 9, 2026 10:00:00').getTime();
+// Target date: May 9, 2026, at 10:00 AM PDT (Pacific Time)
+const targetDate = new Date('2026-05-09T10:00:00-07:00').getTime();
 
 const updateCountdown = () => {
     const now = new Date().getTime();
