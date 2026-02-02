@@ -22,7 +22,10 @@ body {
     align-items: center;
     background: url('assets/wedding-bg.png') no-repeat center center fixed;
     background-size: cover;
-    overflow: hidden;
+    /* Prevent horizontal scroll while allowing vertical scroll if needed on tiny screens */
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 1rem 0;
 }
 
 .overlay {
@@ -167,24 +170,69 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    body {
+        /* On mobile, sometimes central alignment hides content if it overflows */
+        align-items: flex-start;
+        padding: 4rem 1rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
     .wedding-title {
-        font-size: 3.5rem;
+        font-size: 3rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
     }
 
     .names {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+    }
+
+    .time {
+        font-size: 1rem;
+        letter-spacing: 2px;
     }
 
     .countdown-container {
-        gap: 1rem;
+        gap: 0.8rem;
+        margin-bottom: 2rem;
     }
 
     .countdown-item {
-        min-width: 100px;
-        padding: 1.5rem;
+        min-width: calc(50% - 0.4rem);
+        /* 2 per row on smaller screens */
+        padding: 1.2rem;
     }
 
     .number {
+        font-size: 2.2rem;
+    }
+
+    .label {
+        font-size: 0.7rem;
+    }
+}
+
+/* Extra small devices optimization */
+@media (max-width: 380px) {
+    .wedding-title {
         font-size: 2.5rem;
+    }
+
+    .countdown-item {
+        padding: 1rem;
+    }
+
+    .number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-height: 700px) and (orientation: landscape) {
+    body {
+        align-items: center;
+        padding: 2rem 0;
     }
 }
